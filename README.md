@@ -44,3 +44,4 @@ If you'd like to request a new function, feel free to do so by opening an issue 
 - Awesome [Gems](Gemfile)
 
 ## [License](LICENSE.md)
+MIT © [Shaheer-cloud-07](https://github.com/Shaheer-cloud-07)
