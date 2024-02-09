@@ -295,3 +295,650 @@ CloudinaryException (Must supply api_key):
   
 app/controllers/posts_controller.rb:16:in `block in create'
 app/controllers/posts_controller.rb:15:in `create'
+Started GET "/" for 127.0.0.1 at 2024-02-09 10:56:46 +0500
+  [1m[35m (5.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (2.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (1.0ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" ORDER BY created_at desc LIMIT $1 OFFSET $2[0m  [["LIMIT", 5], ["OFFSET", 0]]
+  Rendered posts/_posts_list.html.erb (8.2ms)
+  Rendered posts/index.html.erb within layouts/application (26.1ms)
+  Rendered shared/_navbar.html.erb (1.2ms)
+  Rendered shared/_footer.html.erb (0.4ms)
+Completed 200 OK in 1041ms (Views: 953.4ms | ActiveRecord: 25.2ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2024-02-09 10:56:51 +0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mPost Load (0.8ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 1]]
+  Rendered users/_post.html.erb (5.8ms)
+  [1m[36mPost Load (10.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" INNER JOIN "bookmarks" ON "bookmarks"."post_id" = "posts"."id" WHERE (bookmarks.user_id=1)[0m
+  Rendered users/_post.html.erb (32.7ms)
+  Rendered users/show.html.erb within layouts/application (52.9ms)
+  Rendered shared/_navbar.html.erb (1.6ms)
+  Rendered shared/_footer.html.erb (0.5ms)
+Completed 200 OK in 245ms (Views: 188.2ms | ActiveRecord: 12.9ms)
+
+
+Started GET "/profile" for 127.0.0.1 at 2024-02-09 10:56:57 +0500
+Processing by RegistrationsController#edit as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering devise/registrations/edit.html.erb within layouts/application
+  Rendered shared/_devisemes.html.erb (0.5ms)
+  Rendered devise/registrations/edit.html.erb within layouts/application (30.2ms)
+  Rendered shared/_navbar.html.erb (1.9ms)
+  Rendered shared/_footer.html.erb (0.6ms)
+Completed 200 OK in 135ms (Views: 130.7ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2024-02-09 10:58:07 +0500
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.8ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" ORDER BY created_at desc LIMIT $1 OFFSET $2[0m  [["LIMIT", 5], ["OFFSET", 0]]
+  Rendered posts/_posts_list.html.erb (4.8ms)
+  Rendered posts/index.html.erb within layouts/application (13.5ms)
+  Rendered shared/_navbar.html.erb (5.0ms)
+  Rendered shared/_footer.html.erb (0.5ms)
+Completed 200 OK in 135ms (Views: 122.6ms | ActiveRecord: 2.6ms)
+
+
+Started POST "/posts" for 127.0.0.1 at 2024-02-09 11:02:28 +0500
+Processing by PostsController#create as JSON
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ARWTRF9w918w5LZuJdG0QygkSAJ3E3F5hey6ufkBuiPKLR9XzRTaX6QF+1dvt/OVTgv5NIyCOE3IIe/NiWTKFQ==", "post"=>{"content"=>"Coffee at Tim Hortons"}, "commit"=>"Post", "images"=>{"0"=>#<ActionDispatch::Http::UploadedFile:0x00007f984b986ee0 @tempfile=#<Tempfile:/var/folders/rq/vmvks1qd4cv9twqs1_prqb940000gn/T/RackMultipart20240209-5141-2nqz1r.png>, @original_filename="Screenshot 2024-02-09 at 10.55.13 AM-min.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"images[0]\"; filename=\"Screenshot 2024-02-09 at 10.55.13\xE2\x80\xAFAM-min.png\"\r\nContent-Type: image/png\r\n">}}
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (19.3ms)[0m  [1m[32mINSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["content", "Coffee at Tim Hortons"], ["user_id", 1], ["created_at", "2024-02-09 06:02:28.491616"], ["updated_at", "2024-02-09 06:02:28.491616"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (15.9ms)[0m  [1m[32mINSERT INTO "photos" ("image", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["image", "tqlpvv68rbpc960oimbb.png"], ["post_id", 2], ["created_at", "2024-02-09 06:02:28.586195"], ["updated_at", "2024-02-09 06:02:28.586195"]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+Completed 500 Internal Server Error in 267ms (ActiveRecord: 48.8ms)
+
+
+  
+CloudinaryException (Must supply api_key):
+  
+app/controllers/posts_controller.rb:16:in `block in create'
+app/controllers/posts_controller.rb:15:in `create'
+Started GET "/" for 127.0.0.1 at 2024-02-09 11:02:35 +0500
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" ORDER BY created_at desc LIMIT $1 OFFSET $2[0m  [["LIMIT", 5], ["OFFSET", 0]]
+  [1m[36mPhoto Load (1.0ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = 2[0m
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1[0m
+  [1m[36mLike Load (1.2ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = 2 ORDER BY "likes"."created_at" DESC[0m
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."user_id" = $1 AND "posts"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 2], ["LIMIT", 1]]
+  Rendered posts/_photos.html.erb (0.8ms)
+  [1m[36mLike Load (0.3ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."post_id" = $2 LIMIT $3[0m  [["user_id", 1], ["post_id", 2], ["LIMIT", 1]]
+  Rendered posts/_like_icon.html.erb (1.0ms)
+  [1m[36mBookmark Load (0.5ms)[0m  [1m[34mSELECT  "bookmarks".* FROM "bookmarks" WHERE "bookmarks"."user_id" = $1 AND "bookmarks"."post_id" = $2 LIMIT $3[0m  [["user_id", 1], ["post_id", 2], ["LIMIT", 1]]
+  Rendered posts/_bookmark_icon.html.erb (1.1ms)
+  Rendered posts/_like_text.html.erb (0.5ms)
+  [1m[36mComment Load (1.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 ORDER BY "comments"."created_at" DESC[0m  [["post_id", 2]]
+  Rendered posts/_comment_list.html.erb (10.8ms)
+  Rendered posts/_comment_form.html.erb (16.4ms)
+  Rendered posts/_posts_list.html.erb (100.9ms)
+  Rendered posts/index.html.erb within layouts/application (110.0ms)
+  Rendered shared/_navbar.html.erb (1.3ms)
+  Rendered shared/_footer.html.erb (3.0ms)
+Completed 200 OK in 345ms (Views: 316.9ms | ActiveRecord: 18.4ms)
+
+
+Started POST "/posts" for 127.0.0.1 at 2024-02-09 11:04:46 +0500
+Processing by PostsController#create as JSON
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"uEfDNo2BR1RFwQ1ZD+cbapB715++pbQkPGGIdohbObFzf08lH+VqVNEgQGBFgVy89lRmqUU0/RBxrN0C+D5Jhw==", "post"=>{"content"=>"Coffee at Tim Hortons"}, "commit"=>"Post", "images"=>{"0"=>#<ActionDispatch::Http::UploadedFile:0x00007f984bc62cb8 @tempfile=#<Tempfile:/var/folders/rq/vmvks1qd4cv9twqs1_prqb940000gn/T/RackMultipart20240209-5141-10pnyou.png>, @original_filename="Screenshot 2024-02-09 at 10.55.13 AM-min.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"images[0]\"; filename=\"Screenshot 2024-02-09 at 10.55.13\xE2\x80\xAFAM-min.png\"\r\nContent-Type: image/png\r\n">}}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["content", "Coffee at Tim Hortons"], ["user_id", 1], ["created_at", "2024-02-09 06:04:46.362782"], ["updated_at", "2024-02-09 06:04:46.362782"]]
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (10.2ms)[0m  [1m[32mINSERT INTO "photos" ("image", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["image", "vrmfevvlu40dg6fzvjss.png"], ["post_id", 3], ["created_at", "2024-02-09 06:06:19.218427"], ["updated_at", "2024-02-09 06:06:19.218427"]]
+  [1m[35m (2.1ms)[0m  [1m[31mROLLBACK[0m
+Started GET "/" for 127.0.0.1 at 2024-02-09 11:23:46 +0500
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (7.4ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" ORDER BY created_at desc LIMIT $1 OFFSET $2[0m  [["LIMIT", 5], ["OFFSET", 0]]
+  [1m[36mPhoto Load (7.0ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" IN (3, 2)[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1[0m
+  [1m[36mLike Load (0.7ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" IN (3, 2) ORDER BY "likes"."created_at" DESC[0m
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."user_id" = $1 AND "posts"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 3], ["LIMIT", 1]]
+  Rendered posts/_photos.html.erb (1.8ms)
+  [1m[36mLike Load (0.4ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."post_id" = $2 LIMIT $3[0m  [["user_id", 1], ["post_id", 3], ["LIMIT", 1]]
+  Rendered posts/_like_icon.html.erb (0.7ms)
+  [1m[36mBookmark Load (0.6ms)[0m  [1m[34mSELECT  "bookmarks".* FROM "bookmarks" WHERE "bookmarks"."user_id" = $1 AND "bookmarks"."post_id" = $2 LIMIT $3[0m  [["user_id", 1], ["post_id", 3], ["LIMIT", 1]]
+  Rendered posts/_bookmark_icon.html.erb (0.6ms)
+  Rendered posts/_like_text.html.erb (0.9ms)
+  [1m[36mComment Load (0.9ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 ORDER BY "comments"."created_at" DESC[0m  [["post_id", 3]]
+  Rendered posts/_comment_list.html.erb (15.4ms)
+  Rendered posts/_comment_form.html.erb (15.0ms)
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."user_id" = $1 AND "posts"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 2], ["LIMIT", 1]]
+  Rendered posts/_photos.html.erb (0.3ms)
+  [1m[36mLike Load (0.6ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."post_id" = $2 LIMIT $3[0m  [["user_id", 1], ["post_id", 2], ["LIMIT", 1]]
+  Rendered posts/_like_icon.html.erb (0.2ms)
+  [1m[36mBookmark Load (0.4ms)[0m  [1m[34mSELECT  "bookmarks".* FROM "bookmarks" WHERE "bookmarks"."user_id" = $1 AND "bookmarks"."post_id" = $2 LIMIT $3[0m  [["user_id", 1], ["post_id", 2], ["LIMIT", 1]]
+  Rendered posts/_bookmark_icon.html.erb (0.2ms)
+  Rendered posts/_like_text.html.erb (0.1ms)
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 ORDER BY "comments"."created_at" DESC[0m  [["post_id", 2]]
+  Rendered posts/_comment_list.html.erb (2.0ms)
+  Rendered posts/_comment_form.html.erb (1.3ms)
+  Rendered posts/_posts_list.html.erb (174.1ms)
+  Rendered posts/index.html.erb within layouts/application (191.4ms)
+  Rendered shared/_navbar.html.erb (1.4ms)
+  Rendered shared/_footer.html.erb (0.8ms)
+Completed 200 OK in 889ms (Views: 786.7ms | ActiveRecord: 55.6ms)
+
+
+Started DELETE "/posts/3" for 127.0.0.1 at 2024-02-09 11:23:50 +0500
+Processing by PostsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"+D4ird7sn80rHdFWCLfbJY/R+hU6oazO+r1hljQO+ZwzBq6+TIiyzb/8nG9C0Zzz6f5LI8Ew5fq3cDTiRGuJqg==", "id"=>"3"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPhoto Load (0.6ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = $1[0m  [["post_id", 3]]
+  [1m[35mSQL (2.3ms)[0m  [1m[31mDELETE FROM "posts" WHERE "posts"."id" = $1[0m  [["id", 3]]
+  [1m[35m (7.6ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 30ms (ActiveRecord: 12.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2024-02-09 11:23:50 +0500
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" ORDER BY created_at desc LIMIT $1 OFFSET $2[0m  [["LIMIT", 5], ["OFFSET", 0]]
+  [1m[36mPhoto Load (1.3ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = 2[0m
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1[0m
+  [1m[36mLike Load (0.7ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = 2 ORDER BY "likes"."created_at" DESC[0m
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."user_id" = $1 AND "posts"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 2], ["LIMIT", 1]]
+  Rendered posts/_photos.html.erb (0.9ms)
+  [1m[36mLike Load (0.6ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."post_id" = $2 LIMIT $3[0m  [["user_id", 1], ["post_id", 2], ["LIMIT", 1]]
+  Rendered posts/_like_icon.html.erb (0.5ms)
+  [1m[36mBookmark Load (2.5ms)[0m  [1m[34mSELECT  "bookmarks".* FROM "bookmarks" WHERE "bookmarks"."user_id" = $1 AND "bookmarks"."post_id" = $2 LIMIT $3[0m  [["user_id", 1], ["post_id", 2], ["LIMIT", 1]]
+  Rendered posts/_bookmark_icon.html.erb (1.4ms)
+  Rendered posts/_like_text.html.erb (0.9ms)
+  [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 ORDER BY "comments"."created_at" DESC[0m  [["post_id", 2]]
+  Rendered posts/_comment_list.html.erb (4.6ms)
+  Rendered posts/_comment_form.html.erb (1.5ms)
+  Rendered posts/_posts_list.html.erb (48.3ms)
+  Rendered posts/index.html.erb within layouts/application (55.4ms)
+  Rendered shared/_navbar.html.erb (2.6ms)
+  Rendered shared/_footer.html.erb (0.4ms)
+Completed 200 OK in 144ms (Views: 132.2ms | ActiveRecord: 8.2ms)
+
+
+Started DELETE "/posts/2" for 127.0.0.1 at 2024-02-09 11:23:51 +0500
+Processing by PostsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"AYC5SItop6FqQFZpzvwMScmrYgyf007DnSdSkI7FL/nKuDVbGQyKof6hG1CEmkufr4TTOmRCB/fQ6gfk/qBfzw==", "id"=>"2"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPhoto Load (0.3ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = $1[0m  [["post_id", 2]]
+  [1m[35mSQL (0.9ms)[0m  [1m[31mDELETE FROM "posts" WHERE "posts"."id" = $1[0m  [["id", 2]]
+  [1m[35m (6.0ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 23ms (ActiveRecord: 9.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2024-02-09 11:23:51 +0500
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (2.5ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" ORDER BY created_at desc LIMIT $1 OFFSET $2[0m  [["LIMIT", 5], ["OFFSET", 0]]
+  Rendered posts/_posts_list.html.erb (6.5ms)
+  Rendered posts/index.html.erb within layouts/application (12.0ms)
+  Rendered shared/_navbar.html.erb (1.3ms)
+  Rendered shared/_footer.html.erb (0.4ms)
+Completed 200 OK in 153ms (Views: 146.0ms | ActiveRecord: 3.0ms)
+
+
+Started POST "/posts" for 127.0.0.1 at 2024-02-09 11:24:06 +0500
+Processing by PostsController#create as JSON
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"mOrePw6qQc361qsmGGtnIAe72siyEXYhJaO88Y/CiZtT0lIsnM5szW435h9SDSD2YZRr/kmAPxVobumF/6f5rQ==", "post"=>{"content"=>"Coffee at Tim Hortons"}, "commit"=>"Post", "images"=>{"0"=>#<ActionDispatch::Http::UploadedFile:0x00007fc33bf538a8 @tempfile=#<Tempfile:/var/folders/rq/vmvks1qd4cv9twqs1_prqb940000gn/T/RackMultipart20240209-6122-13sl5c3.png>, @original_filename="Screenshot 2024-02-09 at 10.55.13 AM-min.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"images[0]\"; filename=\"Screenshot 2024-02-09 at 10.55.13\xE2\x80\xAFAM-min.png\"\r\nContent-Type: image/png\r\n">}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (8.3ms)[0m  [1m[32mINSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["content", "Coffee at Tim Hortons"], ["user_id", 1], ["created_at", "2024-02-09 06:24:06.807362"], ["updated_at", "2024-02-09 06:24:06.807362"]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "photos" ("image", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["image", "q3bhfocufat9b2tvsrbv.png"], ["post_id", 4], ["created_at", "2024-02-09 06:24:06.865710"], ["updated_at", "2024-02-09 06:24:06.865710"]]
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+Completed 500 Internal Server Error in 147ms (ActiveRecord: 18.1ms)
+
+
+  
+CloudinaryException (Must supply api_key):
+  
+app/controllers/posts_controller.rb:16:in `block in create'
+app/controllers/posts_controller.rb:15:in `create'
+Started GET "/" for 127.0.0.1 at 2024-02-09 11:33:28 +0500
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (1.0ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" ORDER BY created_at desc LIMIT $1 OFFSET $2[0m  [["LIMIT", 5], ["OFFSET", 0]]
+  [1m[36mPhoto Load (0.6ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = 4[0m
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1[0m
+  [1m[36mLike Load (0.7ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = 4 ORDER BY "likes"."created_at" DESC[0m
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."user_id" = $1 AND "posts"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 4], ["LIMIT", 1]]
+  Rendered posts/_photos.html.erb (1.2ms)
+  [1m[36mLike Load (0.3ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."post_id" = $2 LIMIT $3[0m  [["user_id", 1], ["post_id", 4], ["LIMIT", 1]]
+  Rendered posts/_like_icon.html.erb (0.7ms)
+  [1m[36mBookmark Load (0.6ms)[0m  [1m[34mSELECT  "bookmarks".* FROM "bookmarks" WHERE "bookmarks"."user_id" = $1 AND "bookmarks"."post_id" = $2 LIMIT $3[0m  [["user_id", 1], ["post_id", 4], ["LIMIT", 1]]
+  Rendered posts/_bookmark_icon.html.erb (0.5ms)
+  Rendered posts/_like_text.html.erb (0.6ms)
+  [1m[36mComment Load (0.9ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 ORDER BY "comments"."created_at" DESC[0m  [["post_id", 4]]
+  Rendered posts/_comment_list.html.erb (16.3ms)
+  Rendered posts/_comment_form.html.erb (15.4ms)
+  Rendered posts/_posts_list.html.erb (151.9ms)
+  Rendered posts/index.html.erb within layouts/application (167.7ms)
+  Rendered shared/_navbar.html.erb (1.3ms)
+  Rendered shared/_footer.html.erb (0.4ms)
+Completed 200 OK in 901ms (Views: 811.8ms | ActiveRecord: 24.7ms)
+
+
+Started DELETE "/posts/4" for 127.0.0.1 at 2024-02-09 11:33:31 +0500
+Processing by PostsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"rgNhQMZUZsTgEhunCXluxbaxryHh+UJCxPFHSPc09BBlO+1TVDBLxHTzVp5DHykT0J4eFxpoC3aJPBI8h1GEJg==", "id"=>"4"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPhoto Load (0.3ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = $1[0m  [["post_id", 4]]
+  [1m[35mSQL (2.3ms)[0m  [1m[31mDELETE FROM "posts" WHERE "posts"."id" = $1[0m  [["id", 4]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 18ms (ActiveRecord: 5.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2024-02-09 11:33:31 +0500
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (1.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" ORDER BY created_at desc LIMIT $1 OFFSET $2[0m  [["LIMIT", 5], ["OFFSET", 0]]
+  Rendered posts/_posts_list.html.erb (4.5ms)
+  Rendered posts/index.html.erb within layouts/application (10.0ms)
+  Rendered shared/_navbar.html.erb (1.5ms)
+  Rendered shared/_footer.html.erb (0.6ms)
+Completed 200 OK in 102ms (Views: 95.0ms | ActiveRecord: 1.7ms)
+
+
+Started POST "/posts" for 127.0.0.1 at 2024-02-09 11:33:45 +0500
+Processing by PostsController#create as JSON
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"l0uz6b+N8Em2JiifPB8+TQsSEVQcb8rwnrPvBh7zSsNccz/6LendSSLHZaZ2eXmbbT2gYuf+g8TTfrpybpY69Q==", "post"=>{"content"=>"Coffee at Tim Hortons"}, "commit"=>"Post", "images"=>{"0"=>#<ActionDispatch::Http::UploadedFile:0x00007f9af030dd78 @tempfile=#<Tempfile:/var/folders/rq/vmvks1qd4cv9twqs1_prqb940000gn/T/RackMultipart20240209-6561-x05kue.png>, @original_filename="Screenshot 2024-02-09 at 10.55.13 AM-min.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"images[0]\"; filename=\"Screenshot 2024-02-09 at 10.55.13\xE2\x80\xAFAM-min.png\"\r\nContent-Type: image/png\r\n">}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["content", "Coffee at Tim Hortons"], ["user_id", 1], ["created_at", "2024-02-09 06:33:45.317587"], ["updated_at", "2024-02-09 06:33:45.317587"]]
+  [1m[35m (4.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "photos" ("image", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["image", "xhc97twdwvaoxik9sqq1.png"], ["post_id", 5], ["created_at", "2024-02-09 06:33:45.364387"], ["updated_at", "2024-02-09 06:33:45.364387"]]
+  [1m[35mSQL (18.6ms)[0m  [1m[33mUPDATE "photos" SET "image" = 'image/upload/v1707460428/xhc97twdwvaoxik9sqq1.png' WHERE "photos"."id" = $1[0m  [["id", 5]]
+  [1m[35m (5.5ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/posts
+Completed 200 OK in 3299ms (ActiveRecord: 33.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2024-02-09 11:33:48 +0500
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" ORDER BY created_at desc LIMIT $1 OFFSET $2[0m  [["LIMIT", 5], ["OFFSET", 0]]
+  [1m[36mPhoto Load (0.4ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = 5[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1[0m
+  [1m[36mLike Load (0.4ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = 5 ORDER BY "likes"."created_at" DESC[0m
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."user_id" = $1 AND "posts"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 5], ["LIMIT", 1]]
+  Rendered posts/_photos.html.erb (1.8ms)
+  [1m[36mLike Load (0.6ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."post_id" = $2 LIMIT $3[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  Rendered posts/_like_icon.html.erb (0.6ms)
+  [1m[36mBookmark Load (0.4ms)[0m  [1m[34mSELECT  "bookmarks".* FROM "bookmarks" WHERE "bookmarks"."user_id" = $1 AND "bookmarks"."post_id" = $2 LIMIT $3[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  Rendered posts/_bookmark_icon.html.erb (0.5ms)
+  Rendered posts/_like_text.html.erb (0.5ms)
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 ORDER BY "comments"."created_at" DESC[0m  [["post_id", 5]]
+  Rendered posts/_comment_list.html.erb (2.1ms)
+  Rendered posts/_comment_form.html.erb (1.0ms)
+  Rendered posts/_posts_list.html.erb (25.4ms)
+  Rendered posts/index.html.erb within layouts/application (35.1ms)
+  Rendered shared/_navbar.html.erb (2.8ms)
+  Rendered shared/_footer.html.erb (1.4ms)
+Completed 200 OK in 180ms (Views: 168.8ms | ActiveRecord: 4.4ms)
+
+
+Started GET "/posts/5" for 127.0.0.1 at 2024-02-09 11:34:38 +0500
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (2.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (1.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mLike Load (0.5ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."post_id" = $2 LIMIT $3[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  [1m[36mBookmark Load (0.6ms)[0m  [1m[34mSELECT  "bookmarks".* FROM "bookmarks" WHERE "bookmarks"."user_id" = $1 AND "bookmarks"."post_id" = $2 LIMIT $3[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  [1m[35m (13.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."post_id" = $1[0m  [["post_id", 5]]
+  [1m[36mPhoto Load (0.8ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."post_id" = $1 ORDER BY "photos"."id" ASC LIMIT $2[0m  [["post_id", 5], ["LIMIT", 1]]
+  Rendered posts/_photos.html.erb (19.5ms)
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."user_id" = $1 AND "posts"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 5], ["LIMIT", 1]]
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 ORDER BY "comments"."created_at" DESC[0m  [["post_id", 5]]
+  Rendered posts/_comment_list.html.erb (2.7ms)
+  Rendered posts/_like_icon.html.erb (1.1ms)
+  Rendered posts/_bookmark_icon.html.erb (1.4ms)
+  [1m[36mLike Load (0.7ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = $1 ORDER BY "likes"."created_at" DESC[0m  [["post_id", 5]]
+  Rendered posts/_like_text.html.erb (2.8ms)
+  Rendered posts/_comment_form.html.erb (1.0ms)
+  Rendered posts/show.html.erb within layouts/application (50.8ms)
+  Rendered shared/_navbar.html.erb (1.3ms)
+  Rendered shared/_footer.html.erb (0.5ms)
+Completed 200 OK in 155ms (Views: 118.2ms | ActiveRecord: 21.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2024-02-09 11:35:03 +0500
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" ORDER BY created_at desc LIMIT $1 OFFSET $2[0m  [["LIMIT", 5], ["OFFSET", 0]]
+  [1m[36mPhoto Load (0.5ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = 5[0m
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1[0m
+  [1m[36mLike Load (0.5ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = 5 ORDER BY "likes"."created_at" DESC[0m
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."user_id" = $1 AND "posts"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 5], ["LIMIT", 1]]
+  Rendered posts/_photos.html.erb (4.8ms)
+  [1m[36mLike Load (1.9ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."post_id" = $2 LIMIT $3[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  Rendered posts/_like_icon.html.erb (1.8ms)
+  [1m[36mBookmark Load (0.7ms)[0m  [1m[34mSELECT  "bookmarks".* FROM "bookmarks" WHERE "bookmarks"."user_id" = $1 AND "bookmarks"."post_id" = $2 LIMIT $3[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  Rendered posts/_bookmark_icon.html.erb (0.5ms)
+  Rendered posts/_like_text.html.erb (2.0ms)
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 ORDER BY "comments"."created_at" DESC[0m  [["post_id", 5]]
+  Rendered posts/_comment_list.html.erb (2.9ms)
+  Rendered posts/_comment_form.html.erb (1.1ms)
+  Rendered posts/_posts_list.html.erb (42.8ms)
+  Rendered posts/index.html.erb within layouts/application (45.5ms)
+  Rendered shared/_navbar.html.erb (1.2ms)
+  Rendered shared/_footer.html.erb (0.5ms)
+Completed 200 OK in 144ms (Views: 124.8ms | ActiveRecord: 6.4ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2024-02-09 11:35:05 +0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mPost Load (2.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[36mPhoto Load (1.1ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = 5[0m
+  [1m[36mLike Load (0.5ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = 5 ORDER BY "likes"."created_at" DESC[0m
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = 5 ORDER BY "comments"."created_at" DESC[0m
+  Rendered users/_post.html.erb (17.3ms)
+  [1m[36mPost Load (0.8ms)[0m  [1m[34mSELECT "posts".* FROM "posts" INNER JOIN "bookmarks" ON "bookmarks"."post_id" = "posts"."id" WHERE (bookmarks.user_id=1)[0m
+  Rendered users/_post.html.erb (16.5ms)
+  Rendered users/show.html.erb within layouts/application (42.1ms)
+  Rendered shared/_navbar.html.erb (1.3ms)
+  Rendered shared/_footer.html.erb (0.5ms)
+Completed 200 OK in 135ms (Views: 119.1ms | ActiveRecord: 6.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2024-02-09 11:41:15 +0500
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (3.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (1.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" ORDER BY created_at desc LIMIT $1 OFFSET $2[0m  [["LIMIT", 5], ["OFFSET", 0]]
+  [1m[36mPhoto Load (0.7ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = 5[0m
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1[0m
+  [1m[36mLike Load (0.5ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = 5 ORDER BY "likes"."created_at" DESC[0m
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."user_id" = $1 AND "posts"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 5], ["LIMIT", 1]]
+  Rendered posts/_photos.html.erb (10.0ms)
+  [1m[36mLike Load (0.5ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."post_id" = $2 LIMIT $3[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  Rendered posts/_like_icon.html.erb (1.0ms)
+  [1m[36mBookmark Load (0.8ms)[0m  [1m[34mSELECT  "bookmarks".* FROM "bookmarks" WHERE "bookmarks"."user_id" = $1 AND "bookmarks"."post_id" = $2 LIMIT $3[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  Rendered posts/_bookmark_icon.html.erb (0.9ms)
+  Rendered posts/_like_text.html.erb (0.9ms)
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 ORDER BY "comments"."created_at" DESC[0m  [["post_id", 5]]
+  Rendered posts/_comment_list.html.erb (5.6ms)
+  Rendered posts/_comment_form.html.erb (2.8ms)
+  Rendered posts/_posts_list.html.erb (59.0ms)
+  Rendered posts/index.html.erb within layouts/application (80.1ms)
+  Rendered shared/_navbar.html.erb (2.6ms)
+  Rendered shared/_footer.html.erb (0.4ms)
+Completed 200 OK in 247ms (Views: 207.5ms | ActiveRecord: 9.1ms)
+
+
+Started POST "/posts" for 127.0.0.1 at 2024-02-09 11:43:30 +0500
+Processing by PostsController#create as JSON
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"OaFkXoWK+qJvV9pEmI0c5BmFfbd3gFjtbieoM5nuENTymehNF+7Xovu2l33S61syf6rMgYwREdkj6v1H6Ytg4g==", "post"=>{"content"=>""}, "commit"=>"Post", "images"=>{"0"=>#<ActionDispatch::Http::UploadedFile:0x00007f9aedca9178 @tempfile=#<Tempfile:/var/folders/rq/vmvks1qd4cv9twqs1_prqb940000gn/T/RackMultipart20240209-6561-1i0ug3z.JPG>, @original_filename="IMG_5715-min-min.JPG", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"images[0]\"; filename=\"IMG_5715-min-min.JPG\"\r\nContent-Type: image/jpeg\r\n">}}
+  [1m[36mUser Load (23.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (4.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (38.7ms)[0m  [1m[32mINSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["content", ""], ["user_id", 1], ["created_at", "2024-02-09 06:43:30.709062"], ["updated_at", "2024-02-09 06:43:30.709062"]]
+  [1m[35m (7.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (13.0ms)[0m  [1m[32mINSERT INTO "photos" ("image", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["image", "dtxk21efs4l5jdlcxx6s.png"], ["post_id", 6], ["created_at", "2024-02-09 06:43:30.791841"], ["updated_at", "2024-02-09 06:43:30.791841"]]
+  [1m[35m (0.6ms)[0m  [1m[31mROLLBACK[0m
+Completed 500 Internal Server Error in 8861ms (ActiveRecord: 87.3ms)
+
+
+  
+Cloudinary::CarrierWave::UploadError (File size too large. Got 10908873. Maximum is 10485760.):
+  
+app/controllers/posts_controller.rb:16:in `block in create'
+app/controllers/posts_controller.rb:15:in `create'
+Started GET "/" for 127.0.0.1 at 2024-02-09 11:53:18 +0500
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (1.6ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" ORDER BY created_at desc LIMIT $1 OFFSET $2[0m  [["LIMIT", 5], ["OFFSET", 0]]
+  [1m[36mPhoto Load (3.2ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" IN (6, 5)[0m
+  [1m[36mUser Load (3.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1[0m
+  [1m[36mLike Load (1.4ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" IN (6, 5) ORDER BY "likes"."created_at" DESC[0m
+  [1m[36mPost Load (1.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."user_id" = $1 AND "posts"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 6], ["LIMIT", 1]]
+  Rendered posts/_photos.html.erb (1.3ms)
+  [1m[36mLike Load (11.1ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."post_id" = $2 LIMIT $3[0m  [["user_id", 1], ["post_id", 6], ["LIMIT", 1]]
+  Rendered posts/_like_icon.html.erb (0.8ms)
+  [1m[36mBookmark Load (1.0ms)[0m  [1m[34mSELECT  "bookmarks".* FROM "bookmarks" WHERE "bookmarks"."user_id" = $1 AND "bookmarks"."post_id" = $2 LIMIT $3[0m  [["user_id", 1], ["post_id", 6], ["LIMIT", 1]]
+  Rendered posts/_bookmark_icon.html.erb (1.0ms)
+  Rendered posts/_like_text.html.erb (1.1ms)
+  [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 ORDER BY "comments"."created_at" DESC[0m  [["post_id", 6]]
+  Rendered posts/_comment_list.html.erb (4.8ms)
+  Rendered posts/_comment_form.html.erb (2.0ms)
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."user_id" = $1 AND "posts"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 5], ["LIMIT", 1]]
+  Rendered posts/_photos.html.erb (2.7ms)
+  [1m[36mLike Load (0.6ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."post_id" = $2 LIMIT $3[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  Rendered posts/_like_icon.html.erb (0.3ms)
+  [1m[36mBookmark Load (0.6ms)[0m  [1m[34mSELECT  "bookmarks".* FROM "bookmarks" WHERE "bookmarks"."user_id" = $1 AND "bookmarks"."post_id" = $2 LIMIT $3[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  Rendered posts/_bookmark_icon.html.erb (1.1ms)
+  Rendered posts/_like_text.html.erb (0.1ms)
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 ORDER BY "comments"."created_at" DESC[0m  [["post_id", 5]]
+  Rendered posts/_comment_list.html.erb (2.2ms)
+  Rendered posts/_comment_form.html.erb (0.9ms)
+  Rendered posts/_posts_list.html.erb (130.5ms)
+  Rendered posts/index.html.erb within layouts/application (147.0ms)
+  Rendered shared/_navbar.html.erb (1.5ms)
+  Rendered shared/_footer.html.erb (0.5ms)
+Completed 200 OK in 340ms (Views: 287.5ms | ActiveRecord: 27.7ms)
+
+
+Started DELETE "/posts/6" for 127.0.0.1 at 2024-02-09 11:53:21 +0500
+Processing by PostsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"MnnOAUquKCtKte2IR44BcVWcNJtfiuvqq3Jhc//eOA75QUIS2MoFK95UoLEN6EanM7OFraQbot7mvzQHj7tIOA==", "id"=>"6"}
+  [1m[36mUser Load (5.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (2.4ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPhoto Load (0.6ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = $1[0m  [["post_id", 6]]
+  [1m[35mSQL (11.2ms)[0m  [1m[31mDELETE FROM "posts" WHERE "posts"."id" = $1[0m  [["id", 6]]
+  [1m[35m (3.3ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 44ms (ActiveRecord: 23.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2024-02-09 11:53:21 +0500
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (2.0ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" ORDER BY created_at desc LIMIT $1 OFFSET $2[0m  [["LIMIT", 5], ["OFFSET", 0]]
+  [1m[36mPhoto Load (0.7ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = 5[0m
+  [1m[36mUser Load (4.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1[0m
+  [1m[36mLike Load (0.6ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = 5 ORDER BY "likes"."created_at" DESC[0m
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."user_id" = $1 AND "posts"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 5], ["LIMIT", 1]]
+  Rendered posts/_photos.html.erb (2.4ms)
+  [1m[36mLike Load (0.3ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."post_id" = $2 LIMIT $3[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  Rendered posts/_like_icon.html.erb (0.9ms)
+  [1m[36mBookmark Load (0.7ms)[0m  [1m[34mSELECT  "bookmarks".* FROM "bookmarks" WHERE "bookmarks"."user_id" = $1 AND "bookmarks"."post_id" = $2 LIMIT $3[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  Rendered posts/_bookmark_icon.html.erb (0.5ms)
+  Rendered posts/_like_text.html.erb (0.8ms)
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 ORDER BY "comments"."created_at" DESC[0m  [["post_id", 5]]
+  Rendered posts/_comment_list.html.erb (3.4ms)
+  Rendered posts/_comment_form.html.erb (0.9ms)
+  Rendered posts/_posts_list.html.erb (41.1ms)
+  Rendered posts/index.html.erb within layouts/application (44.3ms)
+  Rendered shared/_navbar.html.erb (1.7ms)
+  Rendered shared/_footer.html.erb (0.8ms)
+Completed 200 OK in 162ms (Views: 147.9ms | ActiveRecord: 10.5ms)
+
+
+Started POST "/posts" for 127.0.0.1 at 2024-02-09 11:53:31 +0500
+Processing by PostsController#create as JSON
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"MN4/t2rvAEbS57FVJfjw5OlSHWilUAnY7WiyqXOFQAX75rOk+IstRkYG/Gxvnrcyj32sXl7BQOygpefdA+AwMw==", "post"=>{"content"=>""}, "commit"=>"Post", "images"=>{"0"=>#<ActionDispatch::Http::UploadedFile:0x00007f9af2150ad8 @tempfile=#<Tempfile:/var/folders/rq/vmvks1qd4cv9twqs1_prqb940000gn/T/RackMultipart20240209-6561-vbmda4.jpg>, @original_filename="IMG_5715-min-min (1).jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"images[0]\"; filename=\"IMG_5715-min-min (1).jpg\"\r\nContent-Type: image/jpeg\r\n">}}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["content", ""], ["user_id", 1], ["created_at", "2024-02-09 06:53:31.071723"], ["updated_at", "2024-02-09 06:53:31.071723"]]
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (2.2ms)[0m  [1m[32mINSERT INTO "photos" ("image", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["image", "fzcngzgdccgyqdrueydr.png"], ["post_id", 7], ["created_at", "2024-02-09 06:53:31.086683"], ["updated_at", "2024-02-09 06:53:31.086683"]]
+  [1m[35mSQL (0.5ms)[0m  [1m[33mUPDATE "photos" SET "image" = 'image/upload/v1707461613/fzcngzgdccgyqdrueydr.png' WHERE "photos"."id" = $1[0m  [["id", 7]]
+  [1m[35m (6.3ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/posts
+Completed 200 OK in 7469ms (ActiveRecord: 12.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2024-02-09 11:53:38 +0500
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" ORDER BY created_at desc LIMIT $1 OFFSET $2[0m  [["LIMIT", 5], ["OFFSET", 0]]
+  [1m[36mPhoto Load (1.7ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" IN (7, 5)[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1[0m
+  [1m[36mLike Load (0.8ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" IN (7, 5) ORDER BY "likes"."created_at" DESC[0m
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."user_id" = $1 AND "posts"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 7], ["LIMIT", 1]]
+  Rendered posts/_photos.html.erb (1.5ms)
+  [1m[36mLike Load (0.5ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."post_id" = $2 LIMIT $3[0m  [["user_id", 1], ["post_id", 7], ["LIMIT", 1]]
+  Rendered posts/_like_icon.html.erb (0.7ms)
+  [1m[36mBookmark Load (0.4ms)[0m  [1m[34mSELECT  "bookmarks".* FROM "bookmarks" WHERE "bookmarks"."user_id" = $1 AND "bookmarks"."post_id" = $2 LIMIT $3[0m  [["user_id", 1], ["post_id", 7], ["LIMIT", 1]]
+  Rendered posts/_bookmark_icon.html.erb (0.6ms)
+  Rendered posts/_like_text.html.erb (0.6ms)
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 ORDER BY "comments"."created_at" DESC[0m  [["post_id", 7]]
+  Rendered posts/_comment_list.html.erb (2.3ms)
+  Rendered posts/_comment_form.html.erb (2.7ms)
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."user_id" = $1 AND "posts"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 5], ["LIMIT", 1]]
+  Rendered posts/_photos.html.erb (1.7ms)
+  [1m[36mLike Load (0.9ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."post_id" = $2 LIMIT $3[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  Rendered posts/_like_icon.html.erb (0.4ms)
+  [1m[36mBookmark Load (0.6ms)[0m  [1m[34mSELECT  "bookmarks".* FROM "bookmarks" WHERE "bookmarks"."user_id" = $1 AND "bookmarks"."post_id" = $2 LIMIT $3[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  Rendered posts/_bookmark_icon.html.erb (0.3ms)
+  Rendered posts/_like_text.html.erb (0.1ms)
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 ORDER BY "comments"."created_at" DESC[0m  [["post_id", 5]]
+  Rendered posts/_comment_list.html.erb (2.0ms)
+  Rendered posts/_comment_form.html.erb (1.0ms)
+  Rendered posts/_posts_list.html.erb (71.7ms)
+  Rendered posts/index.html.erb within layouts/application (79.2ms)
+  Rendered shared/_navbar.html.erb (1.5ms)
+  Rendered shared/_footer.html.erb (0.4ms)
+Completed 200 OK in 311ms (Views: 296.9ms | ActiveRecord: 8.4ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2024-02-09 11:53:47 +0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (2.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[36mPhoto Load (8.1ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" IN (5, 7)[0m
+  [1m[36mLike Load (0.6ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" IN (5, 7) ORDER BY "likes"."created_at" DESC[0m
+  [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" IN (5, 7) ORDER BY "comments"."created_at" DESC[0m
+  Rendered users/_post.html.erb (25.3ms)
+  [1m[36mPost Load (1.9ms)[0m  [1m[34mSELECT "posts".* FROM "posts" INNER JOIN "bookmarks" ON "bookmarks"."post_id" = "posts"."id" WHERE (bookmarks.user_id=1)[0m
+  Rendered users/_post.html.erb (3.5ms)
+  Rendered users/show.html.erb within layouts/application (40.4ms)
+  Rendered shared/_navbar.html.erb (2.1ms)
+  Rendered shared/_footer.html.erb (1.5ms)
+Completed 200 OK in 205ms (Views: 168.9ms | ActiveRecord: 14.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2024-02-09 11:54:16 +0500
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (2.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.8ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" ORDER BY created_at desc LIMIT $1 OFFSET $2[0m  [["LIMIT", 5], ["OFFSET", 0]]
+  [1m[36mPhoto Load (2.4ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" IN (7, 5)[0m
+  [1m[36mUser Load (6.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1[0m
+  [1m[36mLike Load (0.7ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" IN (7, 5) ORDER BY "likes"."created_at" DESC[0m
+  [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."user_id" = $1 AND "posts"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 7], ["LIMIT", 1]]
+  Rendered posts/_photos.html.erb (9.9ms)
+  [1m[36mLike Load (1.6ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."post_id" = $2 LIMIT $3[0m  [["user_id", 1], ["post_id", 7], ["LIMIT", 1]]
+  Rendered posts/_like_icon.html.erb (1.0ms)
+  [1m[36mBookmark Load (0.8ms)[0m  [1m[34mSELECT  "bookmarks".* FROM "bookmarks" WHERE "bookmarks"."user_id" = $1 AND "bookmarks"."post_id" = $2 LIMIT $3[0m  [["user_id", 1], ["post_id", 7], ["LIMIT", 1]]
+  Rendered posts/_bookmark_icon.html.erb (0.8ms)
+  Rendered posts/_like_text.html.erb (1.0ms)
+  [1m[36mComment Load (9.9ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 ORDER BY "comments"."created_at" DESC[0m  [["post_id", 7]]
+  Rendered posts/_comment_list.html.erb (18.4ms)
+  Rendered posts/_comment_form.html.erb (2.7ms)
+  [1m[36mPost Load (4.5ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."user_id" = $1 AND "posts"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 5], ["LIMIT", 1]]
+  Rendered posts/_photos.html.erb (3.5ms)
+  [1m[36mLike Load (0.5ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."post_id" = $2 LIMIT $3[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  Rendered posts/_like_icon.html.erb (0.3ms)
+  [1m[36mBookmark Load (0.4ms)[0m  [1m[34mSELECT  "bookmarks".* FROM "bookmarks" WHERE "bookmarks"."user_id" = $1 AND "bookmarks"."post_id" = $2 LIMIT $3[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  Rendered posts/_bookmark_icon.html.erb (0.6ms)
+  Rendered posts/_like_text.html.erb (0.1ms)
+  [1m[36mComment Load (1.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 ORDER BY "comments"."created_at" DESC[0m  [["post_id", 5]]
+  Rendered posts/_comment_list.html.erb (3.3ms)
+  Rendered posts/_comment_form.html.erb (0.6ms)
+  Rendered posts/_posts_list.html.erb (116.9ms)
+  Rendered posts/index.html.erb within layouts/application (136.8ms)
+  Rendered shared/_navbar.html.erb (3.1ms)
+  Rendered shared/_footer.html.erb (0.5ms)
+Completed 200 OK in 266ms (Views: 217.8ms | ActiveRecord: 33.1ms)
+
+
+Started DELETE "/posts/7" for 127.0.0.1 at 2024-02-09 11:54:26 +0500
+Processing by PostsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"l5SEDi3EKhWzkpwUNAsweFP3y3qgQt9SgrrSPSRFAgBcrAgdv6AHFSdz0S1+bXeuNdh6TFvTlmbPd4dJVCByNg==", "id"=>"7"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (4.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPhoto Load (0.5ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = $1[0m  [["post_id", 7]]
+  [1m[35mSQL (0.8ms)[0m  [1m[31mDELETE FROM "photos" WHERE "photos"."id" = $1[0m  [["id", 7]]
+  [1m[35mSQL (5.3ms)[0m  [1m[31mDELETE FROM "posts" WHERE "posts"."id" = $1[0m  [["id", 7]]
+  [1m[35m (6.2ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 1695ms (ActiveRecord: 19.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2024-02-09 11:54:28 +0500
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" ORDER BY created_at desc LIMIT $1 OFFSET $2[0m  [["LIMIT", 5], ["OFFSET", 0]]
+  [1m[36mPhoto Load (0.5ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = 5[0m
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1[0m
+  [1m[36mLike Load (0.6ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = 5 ORDER BY "likes"."created_at" DESC[0m
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."user_id" = $1 AND "posts"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 5], ["LIMIT", 1]]
+  Rendered posts/_photos.html.erb (1.6ms)
+  [1m[36mLike Load (0.3ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."post_id" = $2 LIMIT $3[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  Rendered posts/_like_icon.html.erb (1.4ms)
+  [1m[36mBookmark Load (0.6ms)[0m  [1m[34mSELECT  "bookmarks".* FROM "bookmarks" WHERE "bookmarks"."user_id" = $1 AND "bookmarks"."post_id" = $2 LIMIT $3[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  Rendered posts/_bookmark_icon.html.erb (5.9ms)
+  Rendered posts/_like_text.html.erb (1.0ms)
+  [1m[36mComment Load (1.0ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 ORDER BY "comments"."created_at" DESC[0m  [["post_id", 5]]
+  Rendered posts/_comment_list.html.erb (6.9ms)
+  Rendered posts/_comment_form.html.erb (1.9ms)
+  Rendered posts/_posts_list.html.erb (50.8ms)
+  Rendered posts/index.html.erb within layouts/application (59.5ms)
+  Rendered shared/_navbar.html.erb (1.6ms)
+  Rendered shared/_footer.html.erb (0.6ms)
+Completed 200 OK in 151ms (Views: 139.0ms | ActiveRecord: 6.8ms)
+
+
