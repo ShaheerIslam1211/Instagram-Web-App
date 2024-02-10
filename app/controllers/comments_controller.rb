@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CommentsController < ApplicationController
   before_action :authenticate_user!
 
@@ -11,7 +13,7 @@ class CommentsController < ApplicationController
       @post = @comment.post
       respond_to :js
     else
-      flash[:alert] = "Something went wrong ..."
+      flash.now[:alert] = 'Something went wrong ...'
     end
   end
 
@@ -21,11 +23,12 @@ class CommentsController < ApplicationController
     if @comment.destroy
       respond_to :js
     else
-      flash[:alert] = "Something went wrong ..."
+      flash.now[:alert] = 'Something went wrong ...'
     end
   end
 
   private
+
   def comment_params
     params.required(:comment).permit :user_id, :post_id, :content
   end
