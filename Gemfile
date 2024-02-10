@@ -28,6 +28,7 @@ gem 'execjs'
 # gem 'therubyracer', :platforms => :ruby
 gem 'pg'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'annotate', '~> 3.2' # annotate models
 
 group :development, :test do
   # Adds support for Capybara system testing and selenium driver
