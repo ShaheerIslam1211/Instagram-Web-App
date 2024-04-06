@@ -25,7 +25,7 @@ gem 'turbolinks', '~> 5'
 gem 'uglifier', '>= 1.3.0'
 gem 'will_paginate-bootstrap4'
 gem 'execjs'
-# gem 'therubyracer', :platforms => :ruby
+gem 'nokogiri', '~> 1.12.5' # Specify Nokogiri version
 gem 'pg'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'annotate', '~> 3.2' # annotate models
