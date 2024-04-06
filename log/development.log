@@ -965,3 +965,19 @@ Processing by Devise::SessionsController#new as HTML
 Completed 200 OK in 10267ms (Views: 10235.0ms | ActiveRecord: 6.7ms | Allocations: 335312)
 
 
+DEPRECATION WARNING: Using legacy connection handling is deprecated. Please set
+`legacy_connection_handling` to `false` in your application.
+
+The new connection handling does not support `connection_handlers`
+getter and setter.
+
+Read more about how to migrate at: https://guides.rubyonrails.org/active_record_multiple_databases.html#migrate-to-the-new-connection-handling
+ (called from <top (required)> at /Users/personal_macbook/Instagram-Web-App/app/models/application_record.rb:1)
+DEPRECATION WARNING: Using legacy connection handling is deprecated. Please set
+`legacy_connection_handling` to `false` in your application.
+
+The new connection handling does not support `connection_handlers`
+getter and setter.
+
+Read more about how to migrate at: https://guides.rubyonrails.org/active_record_multiple_databases.html#migrate-to-the-new-connection-handling
+ (called from <top (required)> at /Users/personal_macbook/Instagram-Web-App/app/models/application_record.rb:1)
