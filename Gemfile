@@ -25,6 +25,7 @@ gem 'turbolinks', '~> 5'
 gem 'uglifier', '>= 1.3.0'
 gem 'will_paginate-bootstrap4'
 gem 'execjs'
+gem 'bundler', '~> 2.0'
 
 # Ensure nokogiri is specified correctly
 gem 'nokogiri', '~> 1.12.5'
