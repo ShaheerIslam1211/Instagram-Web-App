@@ -28,6 +28,9 @@ gem 'uglifier', '>= 4.2.0'
 gem 'will_paginate-bootstrap4', '~> 0.2.2'
 gem 'execjs', '~> 2.8'
 gem 'bundler', '~> 2.3'
+gem 'bigdecimal'
+gem 'mutex_m'
+
 
 # Ensure nokogiri is specified correctly
 gem 'nokogiri', '~> 1.12.5'
