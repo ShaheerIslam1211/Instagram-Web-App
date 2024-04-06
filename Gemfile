@@ -18,17 +18,25 @@ gem 'meta-tags'
 gem 'omniauth', '~> 1.6'
 gem 'omniauth-twitter'
 gem 'puma', '~> 3.7'
-gem 'rails', '~> 5.1.4'
+gem 'rails', '~> 5.2'
 gem 'sass-rails', '~> 5.0'
 gem 'toastr-rails'
 gem 'turbolinks', '~> 5'
 gem 'uglifier', '>= 1.3.0'
 gem 'will_paginate-bootstrap4'
 gem 'execjs'
-gem 'nokogiri', '~> 1.12.5' # Specify Nokogiri version
+
+# Ensure nokogiri is specified correctly
+gem 'nokogiri', '~> 1.12.5'
+
+# Ensure PostgreSQL adapter is specified correctly
 gem 'pg'
+
+# Ensure tzinfo-data is specified correctly
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-gem 'annotate', '~> 3.2' # annotate models
+
+# Ensure annotate gem is specified correctly
+gem 'annotate', '~> 3.2'
 
 group :development, :test do
   # Adds support for Capybara system testing and selenium driver
