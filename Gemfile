@@ -36,7 +36,7 @@ gem 'mutex_m'
 gem 'nokogiri', '~> 1.12.5'
 
 # Ensure PostgreSQL adapter is specified correctly
-gem 'pg', '~> 1.2'
+gem "pg", "~> 1.4"
 
 # Ensure tzinfo-data is specified correctly
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
@@ -48,7 +48,6 @@ group :development, :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 3.35'
   gem 'selenium-webdriver', '~> 4.0'
-  gem 'sqlite3', '~> 1.4'
   gem 'pry-rails', '~> 0.3'
 end
 
