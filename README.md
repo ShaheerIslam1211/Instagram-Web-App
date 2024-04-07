@@ -29,6 +29,13 @@ To fix a bug or enhance an existing module, follow these steps:
 - Push to the branch (`git push origin improve-feature`)
 - Create a Pull Request
 
+### Bug / Feature Request
+
+If you find a bug, kindly open an issue [here](https://github.com/truongnmt/instagram-udemy/issues/new).
+
+If you'd like to request a new function, feel free to do so by opening an issue [here](https://github.com/truongnmt/instagram-udemy/issues/new). Please include sample queries and their corresponding results.
+
+
 ## Built with
 - Ruby 2.5
 - Rails 5.1.6+
