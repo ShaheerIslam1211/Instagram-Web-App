@@ -31,7 +31,6 @@ gem 'bundler', '~> 2.3'
 gem 'bigdecimal'
 gem 'mutex_m'
 
-
 # Ensure nokogiri is specified correctly
 gem 'nokogiri', '~> 1.12.5'
 
