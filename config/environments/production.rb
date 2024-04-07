@@ -33,8 +33,6 @@ Rails.application.configure do
     env.css_compressor = :sass   # or :yui
   end
 
-
-
   # config.assets.css_compressor = :sass
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
@@ -89,6 +87,13 @@ Rails.application.configure do
   # Use a different logger for distributed setups.
   # require 'syslog/logger'
   # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new 'app-name')
+
+  #For render to access its db
+  # In storage.yml it defines a disk service named render with the root set to the mount point of the disks (as defined in render.yaml or via the dashboard).
+  # and then in production.rb ActiveStorage is configured to use this service:
+
+  config.active_storage.service = :render
+
 
   if ENV["RAILS_LOG_TO_STDOUT"].present?
     logger           = ActiveSupport::Logger.new(STDOUT)
