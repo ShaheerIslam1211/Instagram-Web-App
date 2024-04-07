@@ -9,19 +9,27 @@
 
 # Ignore the default SQLite database.
 /db/*.sqlite3
-/db/*.sqlite3-journal
-/node_modules
+/db/*.sqlite3-*
+
 # Ignore all logfiles and tempfiles.
-/log/*.log
-/tmp
-/bin
-/.byebug_history
-# Remove DS files from git
-.DS_Store
-.idea
-/phantomjsdriver.log
-/public/system
-/config/database.yml
-coverage
-/.vscode/settings.json
-/.tool-versions
+/log/*
+/tmp/*
+!/log/.keep
+!/tmp/.keep
+
+# Ignore pidfiles, but keep the directory.
+/tmp/pids/*
+!/tmp/pids/
+!/tmp/pids/.keep
+
+# Ignore uploaded files in development.
+/storage/*
+!/storage/.keep
+/tmp/storage/*
+!/tmp/storage/
+!/tmp/storage/.keep
+
+/public/assets
+
+# Ignore master key for decrypting credentials and more.
+/config/master.key

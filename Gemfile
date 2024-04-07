@@ -7,7 +7,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-gem 'bootstrap', '~> 5.3'
+gem 'bootstrap', '~> 4.0.0'
 gem 'carrierwave', '~> 2.0'
 gem 'cloudinary', '~> 1.26'
 gem 'coffee-rails', '~> 5.0'

@@ -24,12 +24,10 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.build(post_params)
     if @post.save
-      params[:images]&.each do |img|
-        @post.photos.create(image: params[:images][img])
+      params[:images]&.each do |key, img|
+        @post.photos.create(image: img)
       end
-
-      redirect_to posts_path
-      flash.now[:notice] = 'Saved ...'
+      redirect_to posts_path, notice: 'Saved ...'
     else
       flash[:alert] = 'Something went wrong ...'
       redirect_to posts_path
